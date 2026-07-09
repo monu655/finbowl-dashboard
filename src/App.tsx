@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AppShell } from '@/components/layout/AppShell'
 import { Skeleton } from '@/components/ui/Skeleton'
 
@@ -36,7 +36,7 @@ function RouteFallback() {
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <HashRouter>
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route element={<AppShell />}>
@@ -62,7 +62,7 @@ export default function App() {
             <Route path="*" element={<Navigate to="/disbursement" replace />} />
           </Routes>
         </Suspense>
-      </BrowserRouter>
+      </HashRouter>
     </QueryClientProvider>
   )
 }
