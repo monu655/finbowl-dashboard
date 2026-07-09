@@ -1,0 +1,223 @@
+export interface ModuleListItem {
+  id: string
+  name: string
+  meta: string
+  status: string
+  statusTone: 'success' | 'warning' | 'info' | 'neutral'
+}
+
+export interface ModuleContent {
+  title: string
+  breadcrumb: string[]
+  description: string
+  stats: { label: string; value: string }[]
+  listTitle: string
+  listItems: ModuleListItem[]
+}
+
+export const MODULE_CONTENT: Record<string, ModuleContent> = {
+  home: {
+    title: 'Overview',
+    breadcrumb: ['Overview'],
+    description: 'A snapshot across every module you have access to.',
+    stats: [
+      { label: 'Active Loans', value: '128' },
+      { label: 'Pending Approvals', value: '14' },
+      { label: 'This Month Disbursed', value: '₹3,62,50,000' },
+      { label: 'Open Compliance Items', value: '3' },
+    ],
+    listTitle: 'Recent Activity',
+    listItems: [
+      { id: '1', name: 'Rahul Verma · Loan - 2026-04892', meta: 'Status updated to Processed', status: 'Processed', statusTone: 'warning' },
+      { id: '2', name: 'Vikram Desai · LN001-24-1004', meta: 'Disbursement verified', status: 'Verified', statusTone: 'info' },
+      { id: '3', name: 'Anjali Rao · LN008-24-1007', meta: 'Audit completed', status: 'Audited', statusTone: 'success' },
+    ],
+  },
+  finance: {
+    title: 'Finance',
+    breadcrumb: ['Finance'],
+    description: 'Track cash flow, payouts, and reconciliation across all advisory groups.',
+    stats: [
+      { label: 'Net Revenue (MTD)', value: '₹18,42,000' },
+      { label: 'Pending Payouts', value: '₹3,20,500' },
+      { label: 'Reconciled Accounts', value: '96%' },
+      { label: 'Open Invoices', value: '7' },
+    ],
+    listTitle: 'Recent Transactions',
+    listItems: [
+      { id: '1', name: 'Commission payout · Amit Sharma', meta: '25 Nov 2024', status: 'Paid', statusTone: 'success' },
+      { id: '2', name: 'Referral fee · Ravi Kumar', meta: '25 Nov 2024', status: 'Paid', statusTone: 'success' },
+      { id: '3', name: 'Commission payout · Anjali Rao', meta: '04 Dec 2024', status: 'Pending', statusTone: 'warning' },
+    ],
+  },
+  'sales-crm': {
+    title: 'Sales CRM',
+    breadcrumb: ['Sales CRM'],
+    description: 'Manage leads, pipelines, and conversion across your advisory network.',
+    stats: [
+      { label: 'Open Leads', value: '42' },
+      { label: 'Qualified This Week', value: '11' },
+      { label: 'Conversion Rate', value: '23%' },
+      { label: 'Follow-ups Due', value: '6' },
+    ],
+    listTitle: 'Pipeline',
+    listItems: [
+      { id: '1', name: 'Rohan Mehta — Home Loan enquiry', meta: 'Assigned to Suresh Kumar', status: 'Qualified', statusTone: 'info' },
+      { id: '2', name: 'Kavya Nair — Business Loan enquiry', meta: 'Assigned to Priya Sharma', status: 'New', statusTone: 'neutral' },
+      { id: '3', name: 'Arvind Rao — Personal Loan enquiry', meta: 'Assigned to Amit Sharma', status: 'Converted', statusTone: 'success' },
+    ],
+  },
+  'rms-dashboard': {
+    title: 'RMS Dashboard',
+    breadcrumb: ['RMS', 'Dashboard'],
+    description: 'A rollup of disbursement, invoicing, and PO activity across RMS.',
+    stats: [
+      { label: 'Total Disbursements', value: '8' },
+      { label: 'Open Invoices', value: '4' },
+      { label: 'Pending POs', value: '2' },
+      { label: 'Reports Generated', value: '19' },
+    ],
+    listTitle: 'Recent RMS Activity',
+    listItems: [
+      { id: '1', name: 'Disbursement LN010-24-1009 verified', meta: '20 Feb 2024', status: 'Verified', statusTone: 'info' },
+      { id: '2', name: 'Invoice RMS-INV-2026-00159 paid', meta: '04 Dec 2024', status: 'Paid', statusTone: 'success' },
+      { id: '3', name: 'PO RMS-PO-2026-00091 approved', meta: '24 Nov 2024', status: 'Approved', statusTone: 'success' },
+    ],
+  },
+  invoices: {
+    title: 'Invoices',
+    breadcrumb: ['RMS', 'Invoices'],
+    description: 'All commission and vendor invoices raised across active loans.',
+    stats: [
+      { label: 'Total Invoices', value: '24' },
+      { label: 'Paid', value: '19' },
+      { label: 'Pending', value: '5' },
+      { label: 'Total Value', value: '₹18,900' },
+    ],
+    listTitle: 'Invoices',
+    listItems: [
+      { id: '1', name: 'RMS-INV-2026-00156 · Amit Sharma', meta: '25 Nov 2024', status: 'Paid', statusTone: 'success' },
+      { id: '2', name: 'RMS-INV-2026-00157 · Anjali Mehta', meta: '04 Dec 2024', status: 'Paid', statusTone: 'success' },
+      { id: '3', name: 'RMS-INV-2026-00159 · Sneha Iyer', meta: '04 Dec 2024', status: 'Pending', statusTone: 'warning' },
+    ],
+  },
+  po: {
+    title: 'Purchase Orders',
+    breadcrumb: ['RMS', 'PO'],
+    description: 'Purchase orders issued to brokers and connector partners.',
+    stats: [
+      { label: 'Total POs', value: '16' },
+      { label: 'Approved', value: '13' },
+      { label: 'Awaiting Approval', value: '3' },
+      { label: 'Total Value', value: '₹12,025' },
+    ],
+    listTitle: 'Purchase Orders',
+    listItems: [
+      { id: '1', name: 'RMS-PO-2026-00089 · Amit Sharma', meta: '22 Nov 2024', status: 'Paid', statusTone: 'success' },
+      { id: '2', name: 'RMS-PO-2026-00090 · Ravi Patel', meta: '23 Nov 2024', status: 'Paid', statusTone: 'success' },
+      { id: '3', name: 'RMS-PO-2026-00091 · Sita Verma', meta: '24 Nov 2024', status: 'Pending', statusTone: 'warning' },
+    ],
+  },
+  'rms-reports': {
+    title: 'RMS Reports',
+    breadcrumb: ['RMS', 'RMS Reports'],
+    description: 'Scheduled and on-demand reports covering disbursement performance.',
+    stats: [
+      { label: 'Reports This Month', value: '19' },
+      { label: 'Scheduled', value: '6' },
+      { label: 'Shared Externally', value: '4' },
+      { label: 'Avg. Generation Time', value: '3.2s' },
+    ],
+    listTitle: 'Recent Reports',
+    listItems: [
+      { id: '1', name: 'Monthly Disbursement Summary — June', meta: 'Generated 01 Jul 2026', status: 'Ready', statusTone: 'success' },
+      { id: '2', name: 'Commission Payout Reconciliation', meta: 'Generated 28 Jun 2026', status: 'Ready', statusTone: 'success' },
+      { id: '3', name: 'Broker Contribution Report — Q2', meta: 'Scheduled 15 Jul 2026', status: 'Scheduled', statusTone: 'neutral' },
+    ],
+  },
+  compliance: {
+    title: 'Compliance',
+    breadcrumb: ['Compliance'],
+    description: 'KYC, document verification, and audit trail status across loans.',
+    stats: [
+      { label: 'Open Items', value: '3' },
+      { label: 'Docs Pending Review', value: '5' },
+      { label: 'Audits This Quarter', value: '2' },
+      { label: 'SLA Compliance', value: '98%' },
+    ],
+    listTitle: 'Open Compliance Items',
+    listItems: [
+      { id: '1', name: 'KYC re-verification · Karan Iyer', meta: 'Due 12 Jul 2026', status: 'Pending', statusTone: 'warning' },
+      { id: '2', name: 'Document mismatch · Priya Singh', meta: 'Flagged 08 Jul 2026', status: 'Flagged', statusTone: 'warning' },
+      { id: '3', name: 'Annual audit · Gracia Advisory Group', meta: 'Completed 30 Jun 2026', status: 'Cleared', statusTone: 'success' },
+    ],
+  },
+  vendors: {
+    title: 'Vendors',
+    breadcrumb: ['Vendors'],
+    description: 'Brokers, connectors, and third-party partners onboarded to FinBowl.',
+    stats: [
+      { label: 'Active Vendors', value: '11' },
+      { label: 'New This Month', value: '2' },
+      { label: 'Avg. Contribution', value: '0.85%' },
+      { label: 'Pending Onboarding', value: '1' },
+    ],
+    listTitle: 'Vendors',
+    listItems: [
+      { id: '1', name: 'Amit Sharma — Aggregator (CON-001)', meta: '4 active loans', status: 'Active', statusTone: 'success' },
+      { id: '2', name: 'Ravi Patel — Sub-connector (CON-002)', meta: '2 active loans', status: 'Active', statusTone: 'success' },
+      { id: '3', name: 'Sita Verma — Aggregator (CON-003)', meta: 'Onboarding', status: 'Pending', statusTone: 'warning' },
+    ],
+  },
+  'ai-suite': {
+    title: 'AI Suite',
+    breadcrumb: ['AI Suite'],
+    description: 'AI-assisted document verification, risk scoring, and smart summaries.',
+    stats: [
+      { label: 'Documents Auto-Verified', value: '312' },
+      { label: 'Risk Flags Raised', value: '5' },
+      { label: 'Avg. Processing Time', value: '4.1s' },
+      { label: 'Accuracy', value: '97.8%' },
+    ],
+    listTitle: 'Recent AI Runs',
+    listItems: [
+      { id: '1', name: 'Document verification · Loan - 2026-04892', meta: 'Completed in 3.4s', status: 'Passed', statusTone: 'success' },
+      { id: '2', name: 'Risk scoring · LN004-24-1003', meta: 'Flagged for manual review', status: 'Flagged', statusTone: 'warning' },
+      { id: '3', name: 'Summary generation · LN007-24-1006', meta: 'Completed in 2.1s', status: 'Passed', statusTone: 'success' },
+    ],
+  },
+  reports: {
+    title: 'Reports',
+    breadcrumb: ['Reports'],
+    description: 'Company-wide analytics and exportable reports across every module.',
+    stats: [
+      { label: 'Reports Available', value: '32' },
+      { label: 'Custom Dashboards', value: '6' },
+      { label: 'Scheduled Exports', value: '9' },
+      { label: 'Data Sources', value: '5' },
+    ],
+    listTitle: 'Report Library',
+    listItems: [
+      { id: '1', name: 'Advisory Group Performance — Q2 2026', meta: 'Updated 01 Jul 2026', status: 'Ready', statusTone: 'success' },
+      { id: '2', name: 'Loan Funnel Conversion', meta: 'Updated 28 Jun 2026', status: 'Ready', statusTone: 'success' },
+      { id: '3', name: 'Vendor Contribution Trend', meta: 'Scheduled 15 Jul 2026', status: 'Scheduled', statusTone: 'neutral' },
+    ],
+  },
+  settings: {
+    title: 'Account Settings',
+    breadcrumb: ['Settings'],
+    description: 'Manage your profile, notification preferences, and security settings.',
+    stats: [
+      { label: 'Role', value: 'Credit Executive' },
+      { label: 'Advisory Group', value: 'Gracia' },
+      { label: '2FA', value: 'Enabled' },
+      { label: 'Last Login', value: 'Today' },
+    ],
+    listTitle: 'Preferences',
+    listItems: [
+      { id: '1', name: 'Email notifications', meta: 'Disbursement + status updates', status: 'On', statusTone: 'success' },
+      { id: '2', name: 'SMS alerts', meta: 'Critical updates only', status: 'On', statusTone: 'success' },
+      { id: '3', name: 'Weekly digest', meta: 'Every Monday, 9:00 AM', status: 'Off', statusTone: 'neutral' },
+    ],
+  },
+}
